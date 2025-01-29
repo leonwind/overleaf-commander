@@ -5,7 +5,7 @@
  * See: https://stackoverflow.com/a/9517879/3388748
  */
 const script = document.createElement('script');
-script.src = chrome.extension.getURL('app.js');
+script.src = chrome.runtime.getURL('app.js');
 (document.head || document.documentElement).appendChild(script);
 
 /**

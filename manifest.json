@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Overleaf Commander",
   "description": "Omnibar for Overleaf.com",
   "version": "0.1.4",
@@ -9,18 +9,17 @@
         "https://www.overleaf.com/project/*"
       ],
       "js": [
-        "contentscript.js"
+        "src/static/contentscript.js"
       ]
     }
   ],
-  "web_accessible_resources": [
-    "app.js"
-  ],
+  "web_accessible_resources": [{
+    "resources": ["src/app.js"],
+	"matches": ["<all_urls>"]
+  }],
   "background": {
-    "scripts": [
-      "backgroundscript.js"
-    ],
-    "persistent": false
+    "service_worker": "src/static/backgroundscript.js",
+	"type": "module"
   },
   "commands": {
     "toggle-omnibar": {
@@ -30,12 +29,12 @@
       }
     }
   },
-  "browser_action": {
-    "default_popup": "popup.html"
+  "action": {
+    "default_popup": "src/static/popup.html"
   },
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "res/icon16.png",
+    "48": "res/icon48.png",
+    "128": "res/icon128.png"
   }
 }
